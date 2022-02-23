@@ -8,7 +8,7 @@ export default function Header() {
 
   return <nav className="flex items-center justify-between w-full border-b bg-white px-4 py-3">
     <div>
-      <Link href="/" className="no-underline !text-gray-900 font-bold">
+      <Link href="/" className="no-underline !text-gray-900 flex font-bold">
         <span className="-mt-1 leading-none">lastime</span>
       </Link>
     </div>
