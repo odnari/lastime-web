@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 const baseClasses = 'mt-1 rounded-md border px-3 py-1 transition-colors focus:outline-none focus:border-stone-400 w-full sm:text-sm'
 const labelBaseClasses = 'block text-sm font-medium'
-const errorBaseClasses = 'block text-xs text-rose-600 mt-0.5'
+const errorBaseClasses = 'block text-xs text-rose-600 mb-1'
 
 export default function Input({label, disabled, error, register, ...props}) {
   const inputClasses = classNames(baseClasses, {

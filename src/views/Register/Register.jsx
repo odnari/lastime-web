@@ -11,7 +11,7 @@ import useAuthenticatedRedirect from '../../hooks/useAuthenticatedRedirect'
 export default function Login() {
   useAuthenticatedRedirect()
 
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, formState: { errors }, watch } = useForm()
   const dispatch = useDispatch()
 
   const onSubmit = (data) => {
@@ -30,9 +30,28 @@ export default function Login() {
         </span>}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Input label="Username" register={register('username')}/>
-          <Input label="Password" type="password" register={register('password')}/>
-          <Input label="Repeat password" type="password" register={register('passwordConfirm')}/>
+          <Input
+            label="Username"
+            register={register('username', { required: 'Field is required' })}
+            error={errors.username?.message}
+          />
+          <Input
+            label="Password"
+            type="password"
+            register={register('password', { required: 'Field is required' })}
+            error={errors.password?.message}
+          />
+          <Input
+            label="Repeat password"
+            type="password"
+            register={register('repeatPassword', {
+              required: 'Field is required',
+              validate: {
+                sameAsPassword: v => watch('password') === v || 'Passwords are not the same'
+              }
+            })}
+            error={errors.repeatPassword?.message}
+          />
           <div className="mt-1 text-right">
             <Button type="submit" color="success">Join</Button>
           </div>
