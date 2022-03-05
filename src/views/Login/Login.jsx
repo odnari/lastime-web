@@ -26,7 +26,7 @@ export default function Login() {
   return <Page>
     <section className={'mt-24 flex justify-center'}>
       <Card
-        title={'Login'}
+        title="Login"
         footer={<span className="leading-none md:text-xs">Don't have an account?
           <Link className="ml-1" href={'/auth/join'}>Join</Link>
         </span>}

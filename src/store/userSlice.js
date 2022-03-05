@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import wretch from 'wretch'
-import { API_BASE_URL } from '../config'
+import { apiUrls } from '../config'
 
 const initialState = {
   profile: null,
@@ -12,14 +12,14 @@ const LOGIN_USER = 'LOGIN_USER'
 
 export const createUser = createAsyncThunk(
   CREATE_USER,
-  async (payload) => await wretch(`${API_BASE_URL}/users/register`)
+  async (payload) => await wretch(apiUrls.createUser)
     .post(payload)
     .res(res => res.json())
 )
 
 export const loginUser = createAsyncThunk(
   LOGIN_USER,
-  async (payload) => await wretch(`${API_BASE_URL}/users/login`)
+  async (payload) => await wretch(apiUrls.login)
     .post(payload)
     .res(res => res.json())
 )
