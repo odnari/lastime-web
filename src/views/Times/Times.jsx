@@ -24,7 +24,7 @@ export default function Times() {
     <section className={'mt-24 flex justify-center'}>
       <Card
         title="Last Times"
-        footer={<Button color="info" onClick={onAdd}>Add</Button>}
+        topRight={<Button color="info" className="mr-2" onClick={onAdd}>Add</Button>}
       >
         {items.map(i => <Time key={i.id} time={i}/>)}
       </Card>

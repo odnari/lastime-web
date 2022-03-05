@@ -13,11 +13,11 @@ export default function Modal({ children, onClose, title = null }) {
         onClick={onClickStopPropagation}
         className="bg-white relative shadow-md rounded-md shadow-black-200 overflow-hidden border border-stone-200"
       >
-        <div className="select-none w-full flex justify-between items-center py-3 pl-5 pr-2 bg-stone-50 text-gray-600 ">
+        <div className="select-none w-full flex justify-between items-center py-3 pl-5 pr-2 bg-stone-50 text-gray-700">
           <span className="font-medium">{title}</span>
           <button
             onClick={onClose}
-            className="ml-2 font-bold text-2xl leading-none rounded-full w-7 text-center pb-1 bg-stone-50 hover:bg-stone-100"
+            className="text-gray-600 ml-2 font-bold text-2xl leading-none rounded-full w-7 text-center pb-1 bg-stone-50 hover:bg-stone-100"
             type="button">×
           </button>
         </div>
