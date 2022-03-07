@@ -19,10 +19,6 @@ export default function Login() {
     dispatch(loginUser(data))
   }
 
-  useEffect(() => {
-    console.log(errors.username)
-  })
-
   return <Page>
     <section className={'mt-24 flex justify-center'}>
       <Card
