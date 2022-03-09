@@ -21,21 +21,23 @@ export default function Times() {
 
   useEffect(() => {
     if (!displayItemId && items.length) {
-      setDisplayItemId(items[0].id)
+      setDisplayItemId(0)
     }
   }, [items, displayItemId])
 
   const onAdd = () => setShowAddModal(true)
   const onClose = () => setShowAddModal(false)
-  const onTimeSelect = useCallback((item) => setDisplayItemId(item.id), [])
+  const onTimeSelect = useCallback((index) => setDisplayItemId(index), [])
 
   return <Page>
-    <section className='mt-8 container border-t border-stone-100 shadow-stone-200 flex flex-wrap shadow-md rounded-lg'>
-      <div className='sm:w-12 md:w-4/12'>
-        {items.map(i => <Time key={i.id} onClick={onTimeSelect} time={i} active={i.id === displayItemId}/>)}
-        <Button color="info" className="mr-2 rounded-none rounded-bl w-full" onClick={onAdd}>Add new</Button>
+    <section style={{minHeight: '40vh'}} className='mt-8 container border-t border-stone-100 shadow-stone-200 flex flex-wrap shadow-md rounded-lg'>
+      <div className='w-full md:w-4/12 flex flex-col'>
+        <div className='flex-grow'>
+          {items.map((i, index) => <Time key={i.id} onClick={onTimeSelect} index={index} time={i} active={index === displayItemId}/>)}
+        </div>
+        <Button color="info" className="mr-2 rounded-none md:rounded-bl w-full" onClick={onAdd}>Add new</Button>
       </div>
-      <div className="sm:w-12 md:w-8/12 px-2 py-1">
+      <div className="w-full md:w-8/12 px-2 pt-1 pb-2">
         <Entries item={items[displayItemId]}/>
       </div>
     </section>
