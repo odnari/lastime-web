@@ -7,6 +7,7 @@ import Modal from '../../components/Modal'
 import AddTime from './AddTime'
 import { fetchTimes } from '../../store/timesSlice'
 import Time from './Time'
+import Entries from './Entries'
 
 export default function Times() {
   const dispatch = useDispatch()
@@ -35,7 +36,7 @@ export default function Times() {
         <Button color="info" className="mr-2 rounded-none rounded-bl w-full" onClick={onAdd}>Add new</Button>
       </div>
       <div className="sm:w-12 md:w-8/12 px-2 py-1">
-        {displayItemId}
+        <Entries item={items[displayItemId]}/>
       </div>
     </section>
     {
