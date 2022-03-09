@@ -18,6 +18,7 @@ export default function AddTimeEntry({ id }) {
       register={register('date', { required: 'Field is required' })}
       error={errors.date?.message}
       type='datetime-local'
+      required
     />
     <Input
       label="Note"

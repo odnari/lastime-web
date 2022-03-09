@@ -15,6 +15,7 @@ export default function AddTime() {
   return <form onSubmit={handleSubmit(onSubmit)}>
     <Input
       label="Name"
+      required
       register={register('name', { required: 'Field is required' })}
       error={errors.name?.message}
     />

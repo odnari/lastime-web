@@ -4,7 +4,7 @@ const baseClasses = 'mt-1 rounded-md border px-3 py-1 transition-colors focus:ou
 const labelBaseClasses = 'block text-sm font-medium'
 const errorBaseClasses = 'block text-xs text-rose-600 mb-1'
 
-export default function Input({label, disabled, error, register, ...props}) {
+export default function Input({label, disabled, error, register, required, ...props}) {
   const inputClasses = classNames(baseClasses, {
     'border-stone-300 cursor-not-allowed text-stone-600 bg-stone-100 opacity-70': disabled,
     'border-rose-400': Boolean(error)
@@ -16,7 +16,10 @@ export default function Input({label, disabled, error, register, ...props}) {
   })
 
   return <label>
-    {label && <span className={labelClasses}>{label}</span>}
+    {label && <span className={labelClasses}>
+      {label}
+      {required && <span className='text-red-600 pl-0.5 font-bold'>*</span>}
+    </span>}
     <input disabled={disabled} className={inputClasses} {...register} {...props}/>
     <span className={errorBaseClasses}>{error}&nbsp;</span>
   </label>
