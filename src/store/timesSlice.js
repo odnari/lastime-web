@@ -8,12 +8,14 @@ const initialState = {
     create: false,
   },
   errors: {
-    create: null
+    create: null,
+    entryCreate: null,
   }
 }
 
 export const FETCH_TIMES = 'FETCH_TIMES'
 export const CREATE_TIME = 'CREATE_TIME'
+export const CREATE_TIME_ENTRY = 'CREATE_TIME_ENTRY'
 
 export const fetchTimes = createAsyncThunk(
   FETCH_TIMES,
@@ -26,6 +28,14 @@ export const fetchTimes = createAsyncThunk(
 export const createTime = createAsyncThunk(
   CREATE_TIME,
   async (payload, { getState }) => await wretch(apiUrls.lastTime)
+    .auth(getState().user.token)
+    .post(payload)
+    .res(res => res.json())
+)
+
+export const createTimeEntry = createAsyncThunk(
+  CREATE_TIME_ENTRY,
+  async ({id, ...payload}, { getState }) => await wretch(apiUrls.entry(id))
     .auth(getState().user.token)
     .post(payload)
     .res(res => res.json())
@@ -47,6 +57,22 @@ const timesSlice = createSlice({
     },
     [createTime.rejected]: (state) => {
       state.loading.create = false
+    },
+    [createTimeEntry.pending]: (state) => {
+      state.loading.entryCreate = true
+    },
+    [createTimeEntry.fulfilled]: (state, { payload }) => {
+      state.items = state.items.map(i => {
+        if (i.id === payload.parentId) {
+          i.times.unshift(payload.data)
+        }
+
+        return i
+      })
+      state.loading.entryCreate = false
+    },
+    [createTimeEntry.rejected]: (state) => {
+      state.loading.entryCreate = false
     }
   }
 })

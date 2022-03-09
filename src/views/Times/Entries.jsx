@@ -14,8 +14,8 @@ export default function Entries({item}) {
     <Button color="default" className="mt-1 rounded-md w-full" onClick={onAdd}>Add new time entry</Button>
     {item && <EntriesList entries={item.times}/>}
     {
-      showAddModal && <Modal title="Add Time Entry" onClose={onClose}>
-        <AddTimeEntry/>
+      item && showAddModal && <Modal title="Add Time Entry" onClose={onClose}>
+        <AddTimeEntry id={item.id}/>
       </Modal>
     }
   </>
