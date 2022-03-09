@@ -35,7 +35,7 @@ export default function Times() {
         <div className='flex-grow border-r border-stone-100'>
           {items.map((i, index) => <Time key={i.id} onClick={onTimeSelect} index={index} time={i} active={index === displayItemId}/>)}
         </div>
-        <Button color="info" className="mr-2 rounded-none md:rounded-bl w-full" onClick={onAdd}>Add new</Button>
+        <Button color="default" className="mr-2 border-l-0 border-b-0 border-stone-100 text-stone-600 rounded-none md:rounded-bl w-full" onClick={onAdd}>Add New</Button>
       </div>
       <div className="w-full md:w-8/12 px-2 pt-1 pb-2">
         <Entries item={items[displayItemId]}/>
