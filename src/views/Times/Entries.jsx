@@ -12,7 +12,12 @@ export default function Entries({item}) {
 
   return <>
     <Button color="default" className="mt-1 mb-1 text-stone-600 border-stone-200 rounded-md w-full" onClick={onAdd}>Add New Time Entry</Button>
-    <div className='mt-1 border-t border-stone-200'>{item && <EntriesList entries={item.times}/>}</div>
+    {
+      item && item.times.length > 0 &&
+      <div className='mt-1 border-t border-stone-200'>
+        <EntriesList entries={item.times}/>
+      </div>
+    }
     {
       item && showAddModal && <Modal title="Add Time Entry" onClose={onClose}>
         <AddTimeEntry id={item.id}/>

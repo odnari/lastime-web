@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import wretch from 'wretch'
 import { apiUrls } from '../config'
 
@@ -34,6 +34,11 @@ const authenticatedReducer = (state, { payload }) => {
 const userSlice = createSlice({
   name: 'user',
   initialState,
+  reducers: {
+    logoutUser: (state) => {
+      return {...initialState}
+    }
+  },
   extraReducers: {
     [createUser.fulfilled]: authenticatedReducer,
     [loginUser.fulfilled]: authenticatedReducer,
@@ -41,3 +46,4 @@ const userSlice = createSlice({
 })
 
 export default userSlice.reducer
+export const { logoutUser } = userSlice.actions
