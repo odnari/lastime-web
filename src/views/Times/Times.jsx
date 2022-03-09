@@ -32,7 +32,7 @@ export default function Times() {
   return <Page>
     <section style={{minHeight: '40vh'}} className='mt-8 container border-t border-stone-100 shadow-stone-200 flex flex-wrap shadow-md rounded-lg'>
       <div className='w-full md:w-4/12 flex flex-col'>
-        <div className='flex-grow'>
+        <div className='flex-grow border-r border-stone-100'>
           {items.map((i, index) => <Time key={i.id} onClick={onTimeSelect} index={index} time={i} active={index === displayItemId}/>)}
         </div>
         <Button color="info" className="mr-2 rounded-none md:rounded-bl w-full" onClick={onAdd}>Add new</Button>
