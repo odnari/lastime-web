@@ -2,6 +2,7 @@ import Link from '../Link'
 import useIsAuthenticated from '../../hooks/useIsAuthenticated'
 import { useSelector } from 'react-redux'
 import { defaultAuthHome } from '../../config'
+import GeneratedAvatar from '../GeneratedAvatar'
 
 export default function Header() {
   const isAuthenticated = useIsAuthenticated()
@@ -17,8 +18,8 @@ export default function Header() {
       {
         isAuthenticated
           ? <Link href="/profile" title={profile.username} activeClasses="border-2 !border-blue-200"
-                  className="cursor-pointer bg-blue-400 flex items-center border-2 border-transparent no-underline justify-center rounded-full w-6 h-6">
-            <div className="font-medium text-white leading-none pb-0.5">{profile.username.slice(0, 1).toUpperCase()}</div>
+                  className="border-0 cursor-pointer flex items-center no-underline">
+            <GeneratedAvatar className='!w-6 !h-6' colorKey={profile.username}>{profile.username[0]}</GeneratedAvatar>
           </Link>
           :
           <Link href="/auth/login" className="no-underline !text-gray-900" activeClasses="!text-pink-800">

@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 export const colors = {
   default: 'default',
@@ -18,13 +18,13 @@ const colorsClasses = {
   [colors.info]: 'border-sky-400 bg-sky-50 cursor-pointer hover:bg-sky-100',
 }
 
-export default function Button({children, disabled, color, onClick, className = '', type = 'button'}) {
-  const buttonClasses = classNames(
+export default function Button({children, disabled, color = colors.default, onClick, className = '', type = 'button'}) {
+  const buttonClasses = clsx(
     baseClasses,
     className,
     {
       'border-zinc-300 cursor-not-allowed text-zinc-600 bg-zinc-100 opacity-70': disabled,
-      [colorsClasses[color] || colorsClasses[colors.default]]: !disabled
+      [colorsClasses[color]]: !disabled
     },
   )
 

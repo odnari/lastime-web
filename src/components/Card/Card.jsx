@@ -1,7 +1,7 @@
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 export default function Card({ title, children, footer, topRight = null, className = '', }) {
-  const titleContainerClasses = classnames(
+  const titleContainerClasses = clsx(
     'select-none w-full font-medium bg-stone-50 text-gray-700',
     {
       'py-3 px-5 bg-stone-50 text-center': !topRight,
@@ -9,7 +9,7 @@ export default function Card({ title, children, footer, topRight = null, classNa
     }
   )
 
-  const containerClasses = classnames(
+  const containerClasses = clsx(
     'shadow-md rounded-md shadow-stone-200 overflow-hidden border border-stone-200 w-full md:w-64',
     className
   )

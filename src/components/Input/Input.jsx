@@ -1,15 +1,15 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 const baseClasses = 'mt-1 rounded-md border px-3 py-1 transition-colors focus:outline-none focus:border-stone-400 w-full sm:text-sm'
 const labelBaseClasses = 'block text-sm font-medium'
 const errorBaseClasses = 'block text-xs text-rose-600 mb-1'
 
 export default function Input({label, disabled, error, register, required, ...props}) {
-  const inputClasses = classNames(baseClasses, {
+  const inputClasses = clsx(baseClasses, {
     'border-stone-300 cursor-not-allowed text-stone-600 bg-stone-100 opacity-70': disabled,
     'border-rose-400': Boolean(error)
   })
-  const labelClasses = classNames(labelBaseClasses, {
+  const labelClasses = clsx(labelBaseClasses, {
     'text-stone-400': disabled,
     'text-rose-600': Boolean(error),
     'text-zinc-700': !disabled && !error,
