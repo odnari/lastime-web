@@ -12,7 +12,7 @@ export default function AddTime() {
     dispatch(createTime(data))
   }
 
-  return <form onSubmit={handleSubmit(onSubmit)}>
+  return <form className='w-72' onSubmit={handleSubmit(onSubmit)}>
     <Input
       label="Name"
       required

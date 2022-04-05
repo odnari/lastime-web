@@ -30,15 +30,12 @@ export default function Times() {
   const onTimeSelect = useCallback((index) => setDisplayItemId(index), [])
 
   return <Page>
-    <section style={{minHeight: '40vh'}} className='mt-8 container md:overflow-hidden md:border-t border-stone-100 shadow-stone-200 md:flex flex-wrap md:shadow-md md:rounded-lg'>
-      <div className='shadow-stone-200 shadow-sm rounded-lg md:shadow-none md:rounded-none w-full md:w-4/12 md:flex flex-col'>
-        <div className='flex-grow border-r border-stone-100'>
+    <section className='mt-8 container flex justify-center'>
+      <div className='p-4 w-full sm:w-3/4 lg:w-1/2 xl:w-2/4 bg-white rounded-lg border shadow-md sm:px-6 dark:bg-stone-800 dark:border-stone-700'>
+        <div className='divide-y divide-stone-200 dark:divide-stone-700'>
           {items.map((i, index) => <Time key={i.id} onClick={onTimeSelect} index={index} time={i} active={index === displayItemId}/>)}
         </div>
-        <Button color="default" className="mr-2 border-l-0 border-b-0 border-stone-100 text-stone-600 rounded-none md:rounded-bl w-full" onClick={onAdd}>Add New</Button>
-      </div>
-      <div className="shadow-stone-200 shadow-sm rounded-lg md:shadow-none md:rounded-none w-full md:w-8/12 px-2 pt-1 pb-2 mt-6 md:mt-0">
-        <Entries item={items[displayItemId]}/>
+        <Button color="info" className='w-full mt-4' onClick={onAdd}>Add New</Button>
       </div>
     </section>
     {
