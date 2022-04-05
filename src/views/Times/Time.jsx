@@ -1,20 +1,20 @@
-import classnames from 'classnames'
 import Button from '../../components/Button'
+import GeneratedAvatar from '../../components/GeneratedAvatar'
 
 const defaultClasses = 'block w-full px-2 py-1 overflow-hidden border-b hover:bg-stone-100 border-stone-100'
 
 export default function Time({ time, onClick, active, index }) {
-  const classes = classnames(defaultClasses, {
-    'bg-stone-100': active
-  })
-
   return <div
     className="py-4 px-3 w-full text-left hover:bg-stone-50"
   >
     <div className="flex items-center space-x-4 ">
       <div onClick={() => onClick(index)} className="cursor-pointer flex flex-1 min-w-0">
         <div className="flex-shrink-0">
-          <img className="w-8 h-8 rounded-full text-xs" src={time.image} alt={time.image}/>
+          {
+            time.image
+              ? <img className="w-8 h-8 rounded-full" src={time.image} alt={time.image}/>
+              : <GeneratedAvatar colorKey={time.name}>{time.name[0]}</GeneratedAvatar>
+          }
         </div>
         <div className="ml-4 flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
