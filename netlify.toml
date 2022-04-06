@@ -2,6 +2,11 @@
   NODE_VERSION = "16"
   NPM_FLAGS = "--version" # prevent Netlify npm install
 
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [build]
   publish = "dist"
   command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
