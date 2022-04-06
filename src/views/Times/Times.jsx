@@ -29,7 +29,7 @@ export default function Times() {
         {
           currentItem &&
           <>
-            <div className="text-2xl font-medium mb-4">Entries for "{currentItem.name}"</div>
+            <div className="text-2xl font-medium mb-4">History for "{currentItem.name}"</div>
             <div className="bg-white rounded-lg border shadow-md pl-5 dark:bg-stone-800 dark:border-stone-700">
               <Entries className="py-3 pr-5" item={currentItem}/>
             </div>
