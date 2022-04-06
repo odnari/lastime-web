@@ -1,15 +1,20 @@
 import Button from '../../components/Button'
 import GeneratedAvatar from '../../components/GeneratedAvatar'
+import clsx from 'clsx'
 
 const defaultClasses = 'block w-full px-2 py-1 overflow-hidden border-b hover:bg-stone-100 border-stone-100'
 
 export default function Time({ time, onClick, active, index }) {
+  const containerClasses = clsx('py-4 px-3 w-full text-left hover:bg-stone-50', {
+    'bg-stone-50': active,
+  })
+
   return <div
-    className="py-4 px-3 w-full text-left hover:bg-stone-50"
+    className={containerClasses}
   >
     <div className="flex items-center space-x-4 ">
       <div onClick={() => onClick(index)} className="cursor-pointer flex flex-1 min-w-0">
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 flex items-center">
           {
             time.image
               ? <img className="w-8 h-8 rounded-full" src={time.image} alt={time.image}/>
