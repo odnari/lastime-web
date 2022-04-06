@@ -1,14 +1,22 @@
+import clsx from 'clsx'
+
 const EntryItem = ({ item, index }) => {
   const formattedDate = new Date(item.date).toLocaleString()
 
-  return <div className='mt-2 text-sm px-2 py-1 rounded-lg shadow-stone-200 overflow-hidden border border-stone-200'>
-    <span className='font-bold'>{index}. </span>
-    {formattedDate}
-    {Boolean(item.note) && <span className='text-gray-700'> - {item.note}</span>}
-  </div>
+  return <li className="mb-4 ml-4 last-of-type:mb-0">
+    <div
+      className="absolute w-2.5 h-2.5 bg-stone-200 rounded-full mt-2 -left-1.5 border border-white"></div>
+    <time className="mb-1 text-xs font-normal leading-none text-stone-800">{formattedDate}</time>
+    {Boolean(item.note) && <p className="text-base font-normal text-stone-700">{item.note}</p>}
+  </li>
 }
 
-export default function EntriesList({entries}) {
+export default function EntriesList({className, entries}) {
+  const classes = clsx(className, 'relative border-l border-stone-200 dark:border-stone-700')
 
-  return entries.map((t, index) => <EntryItem key={t.date + index} index={entries.length - index} item={t} />)
+  if (!entries.length) return <div className='flex text-2xl text-gray-400 items-center justify-center h-full'>No entries yet...</div>
+
+  return <ol className={classes}>
+    {entries.map((t, index) => <EntryItem key={t.date + index} index={entries.length - index} item={t}/>)}
+  </ol>
 }
