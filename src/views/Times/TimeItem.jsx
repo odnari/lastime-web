@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import Button from '../../components/Button'
 import GeneratedAvatar from '../../components/GeneratedAvatar'
 import clsx from 'clsx'
 import Dropdown from '../../components/Dropdown'
+import { formatDateDistanceToNow } from '../../utils/formatDate'
 
 export default React.memo(function TimeItem({ time, onClick, active, index }) {
   const containerClasses = clsx('w-full text-left hover:bg-stone-50', {
     'bg-stone-50': active,
   })
+  const lastDate = time.times.length > 0 && time.times[0].date
+  const dateDistance = useMemo(() => formatDateDistanceToNow(lastDate), [lastDate])
 
   return <div className={containerClasses}>
     <div className="flex items-center space-x-4">
@@ -26,9 +29,9 @@ export default React.memo(function TimeItem({ time, onClick, active, index }) {
             {time.name}
           </p>
           {
-            time.times.length > 0 &&
+            dateDistance.length > 0 &&
             <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-              {time.times[0].date}
+              {dateDistance} ago
             </p>
           }
         </div>
