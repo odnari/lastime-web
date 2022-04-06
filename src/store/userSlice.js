@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import wretch from 'wretch'
 import { apiUrls } from '../config'
 
@@ -35,7 +35,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    logoutUser: (state) => {
+    logoutUser: () => {
       return {...initialState}
     }
   },
