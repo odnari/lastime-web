@@ -7,19 +7,13 @@ import Entries from './Entries'
 
 export default function Times() {
   const dispatch = useDispatch()
-  const [displayItemId, setDisplayItemId] = useState(null)
+  const [displayItemId, setDisplayItemId] = useState(0)
   const items = useSelector(state => state.times.items)
   const currentItem = items[displayItemId]
 
   useEffect(() => {
     dispatch(fetchTimes())
   }, [])
-
-  useEffect(() => {
-    if (!displayItemId && items.length) {
-      setDisplayItemId(0)
-    }
-  }, [items, displayItemId])
 
   const onTimeSelect = useCallback((index) => setDisplayItemId(index), [])
 
