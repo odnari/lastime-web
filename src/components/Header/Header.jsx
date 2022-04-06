@@ -19,7 +19,7 @@ export default function Header() {
         isAuthenticated
           ? <Link href="/profile" title={profile.username} activeClasses="border-2 !border-blue-200"
                   className="border-0 cursor-pointer flex items-center no-underline">
-            <GeneratedAvatar className='!w-6 !h-6' colorKey={profile.username}>{profile.username[0]}</GeneratedAvatar>
+            <GeneratedAvatar size='6' colorKey={profile.username}>{profile.username[0]}</GeneratedAvatar>
           </Link>
           :
           <Link href="/auth/login" className="no-underline !text-gray-900" activeClasses="!text-pink-800">
