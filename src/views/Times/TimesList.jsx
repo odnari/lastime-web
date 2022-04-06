@@ -13,7 +13,7 @@ export default React.memo(function TimesList({ items, onClick, selectedIndex }) 
 
   return (
     <>
-      <div className="divide-y divide-stone-200 border-b border-stone-200">
+      <div className="overflow-auto divide-y divide-stone-200 border-b border-stone-200">
         {items.map((i, index) => (
           <TimeItem
             key={i.id}
@@ -24,7 +24,7 @@ export default React.memo(function TimesList({ items, onClick, selectedIndex }) 
           />
         ))}
       </div>
-      <div className="p-4 text-center">
+      <div className="p-2 md:p-4 text-center">
         <Button color="info" onClick={onAdd}>Add New</Button>
       </div>
       {

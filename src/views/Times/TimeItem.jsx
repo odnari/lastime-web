@@ -11,17 +11,17 @@ export default React.memo(function TimeItem({ time, onClick, active, index }) {
 
   return <div className={containerClasses}>
     <div className="flex items-center space-x-4">
-      <div onClick={() => onClick(index)} className="py-4 px-3 cursor-pointer flex flex-1 min-w-0">
+      <div onClick={() => onClick(index)} className="py-2 px-3 md:py-4 cursor-pointer flex flex-1 min-w-0">
         <div className="flex-shrink-0 flex items-center">
-          <GeneratedAvatar colorKey={time.name}>
+          <GeneratedAvatar colorKey={time.name} size='6' className='md:w-8 md:h-8'>
             {
               time.image
-                ? <img className="w-8 h-8 rounded-full" src={time.image} alt={time.image}/>
+                ? <img className="w-6 h-6 rounded-full" src={time.image} alt={time.image}/>
                 : time.name[0]
             }
           </GeneratedAvatar>
         </div>
-        <div className="ml-4 flex-1 min-w-0">
+        <div className="ml-2.5 md:ml-4 flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
             {time.name}
           </p>
@@ -33,7 +33,7 @@ export default React.memo(function TimeItem({ time, onClick, active, index }) {
           }
         </div>
       </div>
-      <div className="pr-4">
+      <div className="pr-2.5 md:pr-4">
         <Dropdown
           renderToggle={(onClick) => <Button className="px-2" color="default" onClick={onClick}>⋮</Button>}
         >
