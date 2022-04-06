@@ -1,12 +1,19 @@
 import { useForm } from 'react-hook-form'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { createTime } from '../../store/timesSlice'
+import { useEffect } from 'react'
+import useCallbackOnFulfill from '../../hooks/useCallbackOnFulfill'
 
-export default function AddTime() {
+
+
+export default function AddTime({onClose}) {
   const dispatch = useDispatch()
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const createStatusLoading = useSelector(state => state.times.loading.create)
+
+  useCallbackOnFulfill(onClose, createStatusLoading)
 
   const onSubmit = (data) => {
     dispatch(createTime(data))
@@ -16,11 +23,14 @@ export default function AddTime() {
     <Input
       label="Name"
       required
+      autoComplete='off'
       register={register('name', { required: 'Field is required' })}
       error={errors.name?.message}
     />
     <div className="mt-1 text-right">
-      <Button type="submit" color="success">Create</Button>
+      <Button type="submit" color="success" disabled={createStatusLoading}>
+        {createStatusLoading ? 'Loading...' : 'Create'}
+      </Button>
     </div>
   </form>
 }

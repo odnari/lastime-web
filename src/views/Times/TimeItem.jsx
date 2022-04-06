@@ -5,13 +5,13 @@ import clsx from 'clsx'
 import Dropdown from '../../components/Dropdown'
 
 export default React.memo(function TimeItem({ time, onClick, active, index }) {
-  const containerClasses = clsx('py-4 px-3 w-full text-left hover:bg-stone-50', {
+  const containerClasses = clsx('w-full text-left hover:bg-stone-50', {
     'bg-stone-50': active,
   })
 
   return <div className={containerClasses}>
     <div className="flex items-center space-x-4">
-      <div onClick={() => onClick(index)} className="cursor-pointer flex flex-1 min-w-0">
+      <div onClick={() => onClick(index)} className="py-4 px-3 cursor-pointer flex flex-1 min-w-0">
         <div className="flex-shrink-0 flex items-center">
           <GeneratedAvatar colorKey={time.name}>
             {
@@ -33,16 +33,18 @@ export default React.memo(function TimeItem({ time, onClick, active, index }) {
           }
         </div>
       </div>
-      <Dropdown
-        renderToggle={(onClick) => <Button className="px-2" color="default" onClick={onClick}>⋮</Button>}
-      >
-        <Dropdown.Item>
-          Edit
-        </Dropdown.Item>
-        <Dropdown.Item>
-          Delete
-        </Dropdown.Item>
-      </Dropdown>
+      <div className="pr-4">
+        <Dropdown
+          renderToggle={(onClick) => <Button className="px-2" color="default" onClick={onClick}>⋮</Button>}
+        >
+          <Dropdown.Item>
+            Edit
+          </Dropdown.Item>
+          <Dropdown.Item>
+            Delete
+          </Dropdown.Item>
+        </Dropdown>
+      </div>
     </div>
   </div>
 })

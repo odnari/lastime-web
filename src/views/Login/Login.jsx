@@ -30,6 +30,7 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Username"
+            autoComplete='off'
             register={register('username', { required: 'Field is required' })}
             error={errors.username?.message}
           />

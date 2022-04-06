@@ -12,11 +12,11 @@ export default function Dropdown({ children, renderToggle, disabled, closeOnClic
     'absolute right-0 z-10 w-32 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700',
     {
       'hidden': !isOpen
-    },
-    className
+    }
   )
+  const containerClass = clsx('relative', className)
 
-  return <div className='relative'>
+  return <div className={containerClass}>
     {
       renderToggle
         ? renderToggle(onToggle)

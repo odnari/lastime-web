@@ -24,12 +24,12 @@ export default React.memo(function TimesList({ items, onClick, selectedIndex }) 
           />
         ))}
       </div>
-      <div className="p-4">
-        <Button color="info" className="w-full" onClick={onAdd}>Add New</Button>
+      <div className="p-4 text-center">
+        <Button color="info" onClick={onAdd}>Add New</Button>
       </div>
       {
         showAddModal && <Modal title="Add Last TimeItem" onClose={onClose}>
-          <AddTime/>
+          <AddTime onClose={onClose}/>
         </Modal>
       }
     </>

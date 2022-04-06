@@ -5,7 +5,8 @@ import { apiUrls } from '../config'
 const initialState = {
   items: [],
   loading: {
-    create: false,
+    create: null,
+    entryCreate: null,
   },
   errors: {
     create: null,
@@ -53,7 +54,7 @@ const timesSlice = createSlice({
     },
     [createTime.fulfilled]: (state, { payload }) => {
       state.items.unshift(payload)
-      state.loading.create = false
+      state.loading.create = null
     },
     [createTime.rejected]: (state) => {
       state.loading.create = false
@@ -69,7 +70,7 @@ const timesSlice = createSlice({
 
         return i
       })
-      state.loading.entryCreate = false
+      state.loading.entryCreate = null
     },
     [createTimeEntry.rejected]: (state) => {
       state.loading.entryCreate = false
