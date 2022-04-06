@@ -4,24 +4,19 @@ import { useState } from 'react'
 import Modal from '../../components/Modal'
 import AddTimeEntry from './AddTimeEntry'
 
-export default function Entries({item}) {
+export default function Entries({item, className}) {
   const [showAddModal, setShowAddModal] = useState(false)
 
   const onAdd = () => setShowAddModal(true)
   const onClose = () => setShowAddModal(false)
 
-  return <>
-    <Button color="default" className="mt-1 mb-1 text-stone-600 border-stone-200 rounded-md w-full" onClick={onAdd}>Add New Time Entry</Button>
+  return <div className='relative'>
+    <Button color="default" className="absolute z-10 right-2 top-2 px-2.5 py-1 rounded-full" onClick={onAdd}>+</Button>
+    <EntriesList className={className} entries={item.times}/>
     {
-      item && item.times.length > 0 &&
-      <div className='mt-1 border-t border-stone-200'>
-        <EntriesList entries={item.times}/>
-      </div>
-    }
-    {
-      item && showAddModal && <Modal title="Add Time Entry" onClose={onClose}>
+      item && showAddModal && <Modal title="Add TimeItem Entry" onClose={onClose}>
         <AddTimeEntry id={item.id}/>
       </Modal>
     }
-  </>
+  </div>
 }

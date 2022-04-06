@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import Page from '../../components/Page'
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import AddTime from './AddTime'
-import Time from './Time'
+import TimeItem from './TimeItem'
+import React from 'react'
 
-export default function TimesList({ items, onClick, selectedIndex }) {
+export default React.memo(function TimesList({ items, onClick, selectedIndex }) {
   const [showAddModal, setShowAddModal] = useState(false)
 
   const onAdd = () => setShowAddModal(true)
@@ -13,9 +13,9 @@ export default function TimesList({ items, onClick, selectedIndex }) {
 
   return (
     <>
-      <div className="divide-y divide-stone-200 dark:divide-stone-700">
+      <div className="divide-y divide-stone-200 border-b border-stone-200">
         {items.map((i, index) => (
-          <Time
+          <TimeItem
             key={i.id}
             onClick={onClick}
             index={index}
@@ -24,14 +24,14 @@ export default function TimesList({ items, onClick, selectedIndex }) {
           />
         ))}
       </div>
-      <Button color="info" className="w-full mt-4" onClick={onAdd}>Add New</Button>
+      <div className="p-4">
+        <Button color="info" className="w-full" onClick={onAdd}>Add New</Button>
+      </div>
       {
-        showAddModal && <Modal title="Add Last Time" onClose={onClose}>
+        showAddModal && <Modal title="Add Last TimeItem" onClose={onClose}>
           <AddTime/>
         </Modal>
       }
     </>
   )
-
-
-}
+})

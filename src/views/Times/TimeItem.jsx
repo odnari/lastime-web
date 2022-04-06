@@ -1,24 +1,25 @@
+import React from 'react'
 import Button from '../../components/Button'
 import GeneratedAvatar from '../../components/GeneratedAvatar'
 import clsx from 'clsx'
 import Dropdown from '../../components/Dropdown'
 
-export default function Time({ time, onClick, active, index }) {
+export default React.memo(function TimeItem({ time, onClick, active, index }) {
   const containerClasses = clsx('py-4 px-3 w-full text-left hover:bg-stone-50', {
     'bg-stone-50': active,
   })
 
-  return <div
-    className={containerClasses}
-  >
-    <div className="flex items-center space-x-4 ">
+  return <div className={containerClasses}>
+    <div className="flex items-center space-x-4">
       <div onClick={() => onClick(index)} className="cursor-pointer flex flex-1 min-w-0">
         <div className="flex-shrink-0 flex items-center">
-          {
-            time.image
-              ? <img className="w-8 h-8 rounded-full" src={time.image} alt={time.image}/>
-              : <GeneratedAvatar colorKey={time.name}>{time.name[0]}</GeneratedAvatar>
-          }
+          <GeneratedAvatar colorKey={time.name}>
+            {
+              time.image
+                ? <img className="w-8 h-8 rounded-full" src={time.image} alt={time.image}/>
+                : time.name[0]
+            }
+          </GeneratedAvatar>
         </div>
         <div className="ml-4 flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -32,7 +33,9 @@ export default function Time({ time, onClick, active, index }) {
           }
         </div>
       </div>
-      <Dropdown renderToggle={(onClick) => <Button className='px-2' color='default' onClick={onClick}>⋮</Button>}>
+      <Dropdown
+        renderToggle={(onClick) => <Button className="px-2" color="default" onClick={onClick}>⋮</Button>}
+      >
         <Dropdown.Item>
           Edit
         </Dropdown.Item>
@@ -42,4 +45,4 @@ export default function Time({ time, onClick, active, index }) {
       </Dropdown>
     </div>
   </div>
-}
+})

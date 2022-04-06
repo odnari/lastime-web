@@ -5,7 +5,7 @@ export default function Modal({ children, onClose, title = null }) {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed top-0 left-0 h-screen w-full flex items-center justify-center"
+      className="z-20 fixed top-0 left-0 h-screen w-full flex items-center justify-center"
       style={{ background: 'rgba(0,0,0,0.6)' }}
       onClick={onClose}
     >
