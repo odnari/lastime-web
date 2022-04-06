@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useCallback, useState } from 'react'
-import Button from '../Button'
+import Button from '@/components/Button'
 import DropdownItem from './DropdownItem'
 
 export default function Dropdown({ children, renderToggle, disabled, closeOnClick = true, className = '' }) {

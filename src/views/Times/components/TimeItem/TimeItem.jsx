@@ -1,11 +1,11 @@
-import React, {useMemo} from 'react'
-import Button from '../../components/Button'
-import GeneratedAvatar from '../../components/GeneratedAvatar'
+import {useMemo, memo} from 'react'
 import clsx from 'clsx'
-import Dropdown from '../../components/Dropdown'
-import { formatDateDistanceToNow } from '../../utils/formatDate'
+import Button from '@/components/Button'
+import GeneratedAvatar from '@/components/GeneratedAvatar'
+import Dropdown from '@/components/Dropdown'
+import { formatDateDistanceToNow } from '@/utils/formatDate'
 
-export default React.memo(function TimeItem({ time, onClick, active, index }) {
+export default memo(function TimeItem({ time, onClick, active, index }) {
   const containerClasses = clsx('w-full text-left hover:bg-stone-50', {
     'bg-stone-50': active,
   })

@@ -1,10 +1,10 @@
-import Page from '../../components/Page'
-import Card from '../../components/Card'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUser } from '../../store/userSlice'
+import Button from '@/components/Button'
+import Page from '@/components/Page'
+import Card from '@/components/Card'
+import Input from '@/components/Input'
+import { logoutUser } from '@/store/userSlice'
 
 export default function Profile() {
   const dispatch = useDispatch()

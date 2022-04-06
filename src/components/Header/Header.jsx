@@ -1,8 +1,8 @@
-import Link from '../Link'
-import useIsAuthenticated from '../../hooks/useIsAuthenticated'
 import { useSelector } from 'react-redux'
-import { defaultAuthHome } from '../../config'
+import Link from '../Link'
 import GeneratedAvatar from '../GeneratedAvatar'
+import useIsAuthenticated from '@/hooks/useIsAuthenticated'
+import { defaultAuthHome } from '@/config'
 
 export default function Header() {
   const isAuthenticated = useIsAuthenticated()

@@ -1,7 +1,7 @@
-import React from 'react'
+import { memo } from 'react'
 import clsx from 'clsx'
 
-const EntryItem = React.memo(function EntryItem({ item }) {
+const EntryItem = memo(function EntryItem({ item }) {
   const formattedDate = new Date(item.date).toLocaleString()
 
   return <li className="mb-4 ml-4 last-of-type:mb-0">
@@ -13,7 +13,7 @@ const EntryItem = React.memo(function EntryItem({ item }) {
 })
 
 
-export default React.memo(function EntriesList({className, entries}) {
+export default memo(function EntriesList({className, entries}) {
   const classes = clsx(className, 'relative border-l border-stone-200 dark:border-stone-700')
 
   if (!entries.length) return <div className='flex text-2xl text-gray-400 items-center justify-center h-full py-8'>no entries yet...</div>

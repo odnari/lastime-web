@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Page from '../../components/Page'
-import { fetchTimes } from '../../store/timesSlice'
-import TimesList from './TimesList'
-import Entries from './Entries'
+import Page from '@/components/Page'
+import { fetchTimes } from '@/store/timesSlice'
+import TimesList from './components/TimesList'
+import Entries from './components/Entries'
 
 export default function Times() {
   const dispatch = useDispatch()

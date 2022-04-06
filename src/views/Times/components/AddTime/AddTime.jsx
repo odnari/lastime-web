@@ -1,10 +1,9 @@
 import { useForm } from 'react-hook-form'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { createTime } from '../../store/timesSlice'
-import { useEffect } from 'react'
-import useCallbackOnFulfill from '../../hooks/useCallbackOnFulfill'
+import Input from '@/components/Input'
+import Button from '@/components/Button'
+import { createTime } from '@/store/timesSlice'
+import useCallbackOnFulfill from '@/hooks/useCallbackOnFulfill'
 
 
 

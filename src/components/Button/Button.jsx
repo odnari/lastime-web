@@ -1,6 +1,7 @@
 import clsx from 'clsx'
+import {memo} from 'react'
 
-export const colors = {
+const colors = {
   default: 'default',
   warning: 'warning',
   danger: 'danger',
@@ -18,7 +19,7 @@ const colorsClasses = {
   [colors.info]: 'border-sky-400 bg-sky-50 cursor-pointer hover:bg-sky-100',
 }
 
-export default function Button({children, disabled, color = colors.default, onClick, className = '', type = 'button'}) {
+function Button({children, disabled, color = colors.default, onClick, className = '', type = 'button'}) {
   const buttonClasses = clsx(
     baseClasses,
     className,
@@ -32,3 +33,7 @@ export default function Button({children, disabled, color = colors.default, onCl
     {children}
   </button>
 }
+
+Button.colors = colors
+
+export default memo(Button)

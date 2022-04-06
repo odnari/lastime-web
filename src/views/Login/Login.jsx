@@ -1,13 +1,12 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import Page from '../../components/Page'
-import Link from '../../components/Link'
-import Card from '../../components/Card'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import { loginUser } from '../../store/userSlice'
-import useAuthenticatedRedirect from '../../hooks/useAuthenticatedRedirect'
-import { useEffect } from 'react'
+import Page from '@/components/Page'
+import Link from '@/components/Link'
+import Card from '@/components/Card'
+import Input from '@/components/Input'
+import Button from '@/components/Button'
+import { loginUser } from '@/store/userSlice'
+import useAuthenticatedRedirect from '@/hooks/useAuthenticatedRedirect'
 
 export default function Login() {
   useAuthenticatedRedirect()

@@ -1,5 +1,5 @@
-import getColorFromString from './getColorFromString'
 import { useMemo } from 'react'
+import getColorFromString from './getColorFromString'
 
 export default function GeneratedAvatar({ size = 8, className = '', colorKey, children }) {
   const backgroundColor = useMemo(() => getColorFromString(colorKey), [colorKey])

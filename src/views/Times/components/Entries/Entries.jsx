@@ -1,8 +1,8 @@
-import Button from '../../components/Button'
-import EntriesList from './EntriesList'
 import { useState } from 'react'
-import Modal from '../../components/Modal'
-import AddTimeEntry from './AddTimeEntry'
+import Button from '@/components/Button'
+import Modal from '@/components/Modal'
+import EntriesList from '../EntriesList'
+import AddTimeEntry from '../AddTimeEntry'
 
 export default function Entries({item, className}) {
   const [showAddModal, setShowAddModal] = useState(false)

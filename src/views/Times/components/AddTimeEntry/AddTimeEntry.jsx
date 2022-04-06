@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { createTimeEntry } from '../../store/timesSlice'
-import useCallbackOnFulfill from '../../hooks/useCallbackOnFulfill'
+import Input from '@/components/Input'
+import Button from '@/components/Button'
+import { createTimeEntry } from '@/store/timesSlice'
+import useCallbackOnFulfill from '@/hooks/useCallbackOnFulfill'
 
 export default function AddTimeEntry({ id, onClose }) {
   const dispatch = useDispatch()
