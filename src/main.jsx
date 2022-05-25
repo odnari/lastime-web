@@ -6,16 +6,18 @@ import { persistStore } from 'redux-persist';
 import '@/index.css'
 import App from './App'
 import store from './store'
+import { createRoot } from 'react-dom/client'
 
 const persistor = persistStore(store)
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement)
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )
