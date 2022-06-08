@@ -3,19 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Input from '@/components/Input'
 import Button from '@/components/Button'
 import { createTime } from '@/store/timesSlice'
-import useCallbackOnFulfill from '@/hooks/useCallbackOnFulfill'
-
-
 
 export default function AddTime({onClose}) {
   const dispatch = useDispatch()
   const { register, handleSubmit, formState: { errors } } = useForm()
   const createStatusLoading = useSelector(state => state.times.loading.create)
 
-  useCallbackOnFulfill(onClose, createStatusLoading)
-
   const onSubmit = (data) => {
     dispatch(createTime(data))
+      .then(onClose)
   }
 
   return <form className='w-72' onSubmit={handleSubmit(onSubmit)}>

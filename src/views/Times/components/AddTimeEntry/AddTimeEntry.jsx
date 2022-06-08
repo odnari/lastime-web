@@ -3,17 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Input from '@/components/Input'
 import Button from '@/components/Button'
 import { createTimeEntry } from '@/store/timesSlice'
-import useCallbackOnFulfill from '@/hooks/useCallbackOnFulfill'
 
 export default function AddTimeEntry({ id, onClose }) {
   const dispatch = useDispatch()
   const { register, handleSubmit, formState: { errors } } = useForm()
   const createStatusLoading = useSelector(state => state.times.loading.entryCreate)
 
-  useCallbackOnFulfill(onClose, createStatusLoading)
-
   const onSubmit = (data) => {
     dispatch(createTimeEntry({id, ...data }))
+      .then(onClose)
   }
 
   return <form onSubmit={handleSubmit(onSubmit)}>
