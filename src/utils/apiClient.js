@@ -13,8 +13,16 @@ const authMiddleware = dispatch => next => (...args) => {
   })
 }
 
-const apiClient = (dispatch, ...args) => wretch(...args).middlewares([
-  authMiddleware(dispatch)
-])
+const apiClient = ({ token, anonymous, dispatch }, ...args) => {
+  let request = wretch(...args).middlewares([
+    authMiddleware(dispatch),
+  ])
+
+  if (!anonymous) {
+    request = request.auth(token)
+  }
+
+  return request
+}
 
 export default apiClient

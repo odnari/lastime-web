@@ -20,24 +20,34 @@ export const CREATE_TIME_ENTRY = 'CREATE_TIME_ENTRY'
 
 export const fetchTimes = createAsyncThunk(
   FETCH_TIMES,
-  async (payload, { getState, dispatch }) => await apiClient({ dispatch }, apiUrls.lastTimeByUser(getState().user.profile.username))
-    .auth(getState().user.token)
+  async (payload, { getState, dispatch }) => await apiClient({
+      dispatch,
+      token: getState().user.token
+    },
+    apiUrls.lastTimeByUser(getState().user.profile.username))
     .get()
     .res(res => res.json())
 )
 
 export const createTime = createAsyncThunk(
   CREATE_TIME,
-  async (payload, { getState, dispatch }) => await apiClient({ dispatch }, apiUrls.lastTime)
-    .auth(getState().user.token)
+  async (payload, { getState, dispatch }) => await apiClient({
+      payload,
+      dispatch,
+      token: getState().user.token
+    },
+    apiUrls.lastTime)
     .post(payload)
     .res(res => res.json())
 )
 
 export const createTimeEntry = createAsyncThunk(
   CREATE_TIME_ENTRY,
-  async ({id, ...payload}, { getState, dispatch }) => await apiClient({ dispatch }, apiUrls.entry(id))
-    .auth(getState().user.token)
+  async ({ id, ...payload }, { getState, dispatch }) => await apiClient({
+    payload,
+    dispatch,
+    token: getState().user.token
+  }, apiUrls.entry(id))
     .post(payload)
     .res(res => res.json())
 )

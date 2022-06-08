@@ -3,8 +3,7 @@ import { apiUrls } from '../config'
 import apiClient from '../utils/apiClient'
 
 const initialState = {
-  profile: null,
-  token: null,
+  profile: null, token: null,
 }
 
 const CREATE_USER = 'CREATE_USER'
@@ -12,14 +11,18 @@ const LOGIN_USER = 'LOGIN_USER'
 
 export const createUser = createAsyncThunk(
   CREATE_USER,
-  async (payload) => await apiClient({}, apiUrls.createUser)
+  async (payload) => await apiClient({
+    payload, anonymous: true
+  }, apiUrls.createUser)
     .post(payload)
     .res(res => res.json())
 )
 
 export const loginUser = createAsyncThunk(
   LOGIN_USER,
-  async (payload) => await apiClient({}, apiUrls.login)
+  async (payload) => await apiClient({
+    payload, anonymous: true
+  }, apiUrls.login)
     .post(payload)
     .res(res => res.json())
 )
@@ -32,16 +35,12 @@ const authenticatedReducer = (state, { payload }) => {
 }
 
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
+  name: 'user', initialState, reducers: {
     logoutUser: () => {
-      return {...initialState}
+      return { ...initialState }
     }
-  },
-  extraReducers: {
-    [createUser.fulfilled]: authenticatedReducer,
-    [loginUser.fulfilled]: authenticatedReducer,
+  }, extraReducers: {
+    [createUser.fulfilled]: authenticatedReducer, [loginUser.fulfilled]: authenticatedReducer,
   }
 })
 
