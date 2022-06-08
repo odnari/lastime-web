@@ -1,15 +1,41 @@
+import { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Page from '@/components/Page'
-import Link from '@/components/Link'
-import useAuthenticatedRedirect from '@/hooks/useAuthenticatedRedirect'
+import { fetchTimes } from '@/store/timesSlice'
+import TimesList from './components/Times'
+import Entries from './components/Entries'
 
 export default function Home() {
-  useAuthenticatedRedirect()
+  const dispatch = useDispatch()
+  const [displayItemId, setDisplayItemId] = useState(0)
+  const items = useSelector(state => state.times.items)
+  const currentItem = items[displayItemId]
 
-  return <Page className='text-center w-full md:w-1/2'>
-    <h2 className='text-3xl mt-20 mb-6'>When was the last time you did something or attended an event?</h2>
-    <h3 className='text-xl mb-4'>If you ever wonder the same question, but don’t know the answer. Lastime is for you.</h3>
-    <Link href={'/auth/join'}>
-      <h3 className='text-xl'>Create an account</h3>
-    </Link>
+  useEffect(() => {
+    dispatch(fetchTimes())
+  }, [])
+
+  const onTimeSelect = useCallback((index) => setDisplayItemId(index), [])
+
+  return <Page>
+    <div className="flex flex-wrap items-start justify-center">
+      <div className="p-4 w-full md:w-3/4 lg:w-1/2 xl:w-2/4">
+        <div className="text-2xl font-medium mb-4">Last Time I</div>
+        <div className="max-h-80 md:max-h-max flex flex-col bg-white rounded-lg border shadow-md dark:bg-stone-800 dark:border-stone-700">
+          <TimesList items={items} onClick={onTimeSelect} selectedIndex={displayItemId}/>
+        </div>
+      </div>
+      <div className="p-4 w-full md:w-3/4 lg:w-1/2 xl:w-2/4">
+        {
+          currentItem &&
+          <>
+            <div className="text-2xl font-medium mb-4">History for "{currentItem.name}"</div>
+            <div className="bg-white rounded-lg border shadow-md pl-5 dark:bg-stone-800 dark:border-stone-700">
+              <Entries className="py-3 pr-5" item={currentItem}/>
+            </div>
+          </>
+        }
+      </div>
+    </div>
   </Page>
 }

@@ -4,7 +4,7 @@ import Modal from '@/components/Modal'
 import AddTime from '../AddTime'
 import TimeItem from '../TimeItem'
 
-export default memo(function TimesList({ items, onClick, selectedIndex }) {
+export default memo(function Times({ items, onClick, selectedIndex }) {
   const [showAddModal, setShowAddModal] = useState(false)
 
   const onAdd = () => setShowAddModal(true)

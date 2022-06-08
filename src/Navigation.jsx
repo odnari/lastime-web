@@ -1,9 +1,9 @@
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import Home from './views/Home'
+import Index from './views/Landing'
 import Login from './views/Login'
-import Register from './views/Register/Register'
+import Register from './views/Register'
 import Profile from './views/Profile'
-import Times from './views/Times'
+import Home from './views/Home'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
@@ -18,10 +18,10 @@ export default function Navigation() {
   }, [isAuthenticated])
 
   return <Routes>
-    <Route path="/" element={<Home/>}/>
+    <Route path="/" element={<Index/>}/>
     <Route path="/auth/login" element={<Login/>}/>
     <Route path="/auth/join" element={<Register/>}/>
     <Route path="/profile" element={<Profile/>}/>
-    <Route path="/times" element={<Times/>}/>
+    <Route path="/times" element={<Home/>}/>
   </Routes>
 }
