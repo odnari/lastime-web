@@ -73,7 +73,7 @@ const timesSlice = createSlice({
     [createTimeEntry.fulfilled]: (state, { payload }) => {
       state.items = state.items.map(i => {
         if (i.id === payload.parentId) {
-          i.times.unshift(payload.data)
+          i.entries.unshift(payload.data)
         }
 
         return i
