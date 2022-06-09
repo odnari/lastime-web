@@ -7,6 +7,7 @@ import Input from '@/components/Input'
 import Button from '@/components/Button'
 import { loginUser } from '@/store/userSlice'
 import useAuthenticatedRedirect from '@/hooks/useAuthenticatedRedirect'
+import { routes } from '../../config'
 
 export default function Login() {
   useAuthenticatedRedirect()
@@ -23,7 +24,7 @@ export default function Login() {
       <Card
         title="Login"
         footer={<span className="leading-none md:text-xs">Don't have an account?
-          <Link className="ml-1" href={'/auth/join'}>Join</Link>
+          <Link className="ml-1" href={routes.auth.signup}>Join</Link>
         </span>}
       >
         <form onSubmit={handleSubmit(onSubmit)}>

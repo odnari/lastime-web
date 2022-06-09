@@ -3,6 +3,7 @@ import Link from '../Link'
 import GeneratedAvatar from '../GeneratedAvatar'
 import useIsAuthenticated from '@/hooks/useIsAuthenticated'
 import { defaultAuthHome } from '@/config'
+import { routes } from '../../config'
 
 export default function Header() {
   const isAuthenticated = useIsAuthenticated()
@@ -17,12 +18,12 @@ export default function Header() {
     <div className="text-sm">
       {
         isAuthenticated
-          ? <Link href="/profile" title={profile.username} activeClasses="border-2 !border-blue-200"
+          ? <Link href={routes.profile} title={profile.username} activeClasses="border-2 !border-blue-200"
                   className="border-0 cursor-pointer flex items-center no-underline">
             <GeneratedAvatar size='6' colorKey={profile.username}>{profile.username[0]}</GeneratedAvatar>
           </Link>
           :
-          <Link href="/auth/login" className="no-underline !text-gray-900" activeClasses="!text-pink-800">
+          <Link href={routes.auth.login} className="no-underline !text-gray-900" activeClasses="!text-pink-800">
             <span className="-mt-1 leading-none ">Login</span>
           </Link>
       }
