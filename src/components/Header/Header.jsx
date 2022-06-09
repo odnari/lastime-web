@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux'
 import Link from '../Link'
 import GeneratedAvatar from '../GeneratedAvatar'
 import useIsAuthenticated from '@/hooks/useIsAuthenticated'
-import { defaultAuthHome } from '@/config'
 import { routes } from '../../config'
 
 export default function Header() {
@@ -11,7 +10,7 @@ export default function Header() {
 
   return <nav className="flex items-center justify-between w-full border-b bg-white px-2 py-2">
     <div>
-      <Link href={isAuthenticated ? defaultAuthHome : '/'} className="no-underline !text-gray-900 flex font-bold">
+      <Link href={isAuthenticated ? routes.home : routes.index} className="no-underline !text-gray-900 flex font-bold">
         <span className="leading-none ml-1">lastime</span>
       </Link>
     </div>

@@ -11,18 +11,14 @@ const LOGIN_USER = 'LOGIN_USER'
 
 export const createUser = createAsyncThunk(
   CREATE_USER,
-  async (payload) => await apiClient({
-    payload, anonymous: true
-  }, apiUrls.createUser)
+  async (payload) => await apiClient({}, apiUrls.users.create)
     .post(payload)
     .res(res => res.json())
 )
 
 export const loginUser = createAsyncThunk(
   LOGIN_USER,
-  async (payload) => await apiClient({
-    payload, anonymous: true
-  }, apiUrls.login)
+  async (payload) => await apiClient({}, apiUrls.users.login)
     .post(payload)
     .res(res => res.json())
 )

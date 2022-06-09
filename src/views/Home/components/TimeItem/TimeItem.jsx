@@ -9,7 +9,7 @@ export default memo(function TimeItem({ time, onClick, active, index }) {
   const containerClasses = clsx('w-full text-left hover:bg-stone-50', {
     'bg-stone-50': active,
   })
-  const lastDate = time.times.length > 0 && time.times[0].date
+  const lastDate = time.entries.length > 0 && time.entries[0].date
   const dateDistance = useMemo(() => formatDateDistanceToNow(lastDate), [lastDate])
 
   return <div className={containerClasses}>

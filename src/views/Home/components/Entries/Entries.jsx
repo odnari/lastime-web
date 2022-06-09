@@ -15,7 +15,7 @@ export default function Entries({ item, className }) {
 
   return <div className="relative">
     <Button color="info" className={addButtonClasses} onClick={onAdd}>+</Button>
-    <EntriesList className={className} entries={item.times}/>
+    <EntriesList className={className} entries={item.entries}/>
     {
       item && showAddModal && <Modal title="Add Time Entry" onClose={onClose}>
         <AddTimeEntry id={item.id} onClose={onClose}/>

@@ -24,7 +24,7 @@ export const fetchTimes = createAsyncThunk(
       dispatch,
       token: getState().user.token
     },
-    apiUrls.lastTimeByUser(getState().user.profile.username))
+    apiUrls.times.byUsername(getState().user.profile.username))
     .get()
     .res(res => res.json())
 )
@@ -32,11 +32,10 @@ export const fetchTimes = createAsyncThunk(
 export const createTime = createAsyncThunk(
   CREATE_TIME,
   async (payload, { getState, dispatch }) => await apiClient({
-      payload,
       dispatch,
       token: getState().user.token
     },
-    apiUrls.lastTime)
+    apiUrls.times.root)
     .post(payload)
     .res(res => res.json())
 )
@@ -44,10 +43,9 @@ export const createTime = createAsyncThunk(
 export const createTimeEntry = createAsyncThunk(
   CREATE_TIME_ENTRY,
   async ({ id, ...payload }, { getState, dispatch }) => await apiClient({
-    payload,
     dispatch,
     token: getState().user.token
-  }, apiUrls.entry(id))
+  }, apiUrls.entries.root(id))
     .post(payload)
     .res(res => res.json())
 )

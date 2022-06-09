@@ -13,12 +13,12 @@ const authMiddleware = dispatch => next => (...args) => {
   })
 }
 
-const apiClient = ({ token, anonymous, dispatch }, ...args) => {
+const apiClient = ({ token, dispatch }, ...args) => {
   let request = wretch(...args).middlewares([
     authMiddleware(dispatch),
   ])
 
-  if (!anonymous) {
+  if (token) {
     request = request.auth(token)
   }
 
