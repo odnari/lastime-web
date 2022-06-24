@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
 
 export default () => {
-  return useSelector(state => Boolean(state.user.token))
+  return useSelector(state => Boolean(state.user.profile))
 }

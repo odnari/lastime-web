@@ -1,22 +1,22 @@
 import wretch from 'wretch'
-import { logoutUser } from '../store/userSlice'
+import { getToken, logout } from './authService'
 
-const onUnauthorized = dispatch => dispatch(logoutUser())
-
-const authMiddleware = dispatch => next => (...args) => {
+const logoutMiddleware = () => next => (...args) => {
   return next(...args).then((res) => {
     if (res.status === 401) {
-      onUnauthorized(dispatch)
+      logout()
     }
 
     return res
   })
 }
 
-const apiClient = ({ token, dispatch }, ...args) => {
+const apiClient = (...args) => {
   let request = wretch(...args).middlewares([
-    authMiddleware(dispatch),
+    logoutMiddleware(),
   ])
+
+  const token = getToken()
 
   if (token) {
     request = request.auth(token)

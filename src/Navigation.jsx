@@ -4,12 +4,9 @@ import Login from './views/Login'
 import Register from './views/Register'
 import Profile from './views/Profile'
 import Home from './views/Home'
-import useAuthenticatedRedirect from './hooks/useAuthenticatedRedirect'
 import { routes } from './config'
 
 export default function Navigation() {
-  useAuthenticatedRedirect('/', true)
-
   return <Routes>
     <Route path={routes.index} element={<Index/>}/>
     <Route path={routes.auth.login} element={<Login/>}/>

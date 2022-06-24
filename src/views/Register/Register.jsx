@@ -6,20 +6,20 @@ import Card from '@/components/Card'
 import Input from '@/components/Input'
 import Button from '@/components/Button'
 import { createUser } from '@/store/userSlice'
-import useAuthenticatedRedirect from '@/hooks/useAuthenticatedRedirect'
 import { routes } from '../../config'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
-  useAuthenticatedRedirect()
-
-  const { register, handleSubmit, formState: { errors }, watch } = useForm()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { register, handleSubmit, formState: { errors }, watch } = useForm()
 
   const onSubmit = (data) => {
     dispatch(createUser({
       username: data.username,
       password: data.password,
     }))
+      .then(() => navigate(routes.home))
   }
 
   return <Page>

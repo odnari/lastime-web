@@ -4,7 +4,7 @@ import Button from '@/components/Button'
 import Page from '@/components/Page'
 import Card from '@/components/Card'
 import Input from '@/components/Input'
-import { logoutUser } from '@/store/userSlice'
+import { logout } from '../../utils/authService'
 
 export default function Profile() {
   const dispatch = useDispatch()
@@ -16,7 +16,7 @@ export default function Profile() {
   }
 
   const onLogOut = () => {
-    dispatch(logoutUser())
+    logout()
   }
 
   if (!profile) return null

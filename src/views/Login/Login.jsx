@@ -6,17 +6,17 @@ import Card from '@/components/Card'
 import Input from '@/components/Input'
 import Button from '@/components/Button'
 import { loginUser } from '@/store/userSlice'
-import useAuthenticatedRedirect from '@/hooks/useAuthenticatedRedirect'
 import { routes } from '../../config'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
-  useAuthenticatedRedirect()
-
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { register, handleSubmit, formState: { errors } } = useForm()
 
   const onSubmit = (data) => {
     dispatch(loginUser(data))
+      .then(() => navigate(routes.home))
   }
 
   return <Page>
