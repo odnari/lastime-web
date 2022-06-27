@@ -6,16 +6,19 @@ const initialState = {
   items: [],
   loading: {
     create: null,
+    update: null,
     entryCreate: null,
   },
   errors: {
     create: null,
+    update: null,
     entryCreate: null,
   }
 }
 
 export const FETCH_TIMES = 'FETCH_TIMES'
 export const CREATE_TIME = 'CREATE_TIME'
+export const UPDATE_TIME = 'UPDATE_TIME'
 export const CREATE_TIME_ENTRY = 'CREATE_TIME_ENTRY'
 
 export const fetchTimes = createAsyncThunk(
@@ -27,14 +30,21 @@ export const fetchTimes = createAsyncThunk(
 
 export const createTime = createAsyncThunk(
   CREATE_TIME,
-  async (payload, { getState }) => await apiClient(apiUrls.times.root)
+  async (payload) => await apiClient(apiUrls.times.root)
     .post(payload)
+    .res(res => res.json())
+)
+
+export const updateTime = createAsyncThunk(
+  UPDATE_TIME,
+  async (payload) => await apiClient(apiUrls.times.root)
+    .put(payload)
     .res(res => res.json())
 )
 
 export const createTimeEntry = createAsyncThunk(
   CREATE_TIME_ENTRY,
-  async ({ id, ...payload }, { getState }) => await apiClient(apiUrls.entries.root(id))
+  async ({ id, ...payload }) => await apiClient(apiUrls.entries.root(id))
     .post(payload)
     .res(res => res.json())
 )
@@ -55,6 +65,22 @@ const timesSlice = createSlice({
     },
     [createTime.rejected]: (state) => {
       state.loading.create = false
+    },
+    [updateTime.pending]: (state) => {
+      state.loading.update = true
+    },
+    [updateTime.fulfilled]: (state, {payload}) => {
+      state.items = state.items.map(i => {
+        if (i.id === payload.id) {
+          return payload
+        }
+
+        return i
+      })
+      state.loading.update = null
+    },
+    [updateTime.rejected]: (state) => {
+      state.loading.update = false
     },
     [createTimeEntry.pending]: (state) => {
       state.loading.entryCreate = true
