@@ -1,7 +1,7 @@
 import { memo, useState } from 'react'
 import Button from '@/components/Button'
 import Modal from '@/components/Modal'
-import AddTime from '../AddTime'
+import TimeForm from '../TimeForm'
 import TimesList from '../TimesList'
 
 export default memo(function Times({ items, onClick, selectedIndex }) {
@@ -12,7 +12,7 @@ export default memo(function Times({ items, onClick, selectedIndex }) {
 
   return (
     <>
-      <div className="overflow-auto divide-y divide-stone-200 border-b border-stone-200">
+      <div className="divide-y divide-stone-200 border-b border-stone-200">
         <TimesList items={items} onClick={onClick} selectedIndex={selectedIndex}/>
       </div>
       <div className="p-2 md:p-4 text-center">
@@ -20,7 +20,7 @@ export default memo(function Times({ items, onClick, selectedIndex }) {
       </div>
       {
         showAddModal && <Modal title="Add Last TimeItem" onClose={onClose}>
-          <AddTime onClose={onClose}/>
+          <TimeForm onClose={onClose}/>
         </Modal>
       }
     </>

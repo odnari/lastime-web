@@ -38,7 +38,7 @@ export default memo(function TimeItem({ time, onClick, active, index }) {
       </div>
       <div className="pr-2.5 md:pr-4">
         <Dropdown
-          renderToggle={(onClick) => <Button className="px-2" color="default" onClick={onClick}>⋮</Button>}
+          renderToggle={(onClick) => <Button className="px-2 z-0" color="default" onClick={onClick}>⋮</Button>}
         >
           <Dropdown.Item>
             Edit
