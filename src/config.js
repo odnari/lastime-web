@@ -18,7 +18,7 @@ export const apiUrls = {
 
 export const routes = {
   index: '/',
-  home: '/app',
+  app: '/app',
   auth: {
     login: '/auth/login',
     signup: '/auth/join',

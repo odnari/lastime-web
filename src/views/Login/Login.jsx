@@ -16,7 +16,7 @@ export default function Login() {
 
   const onSubmit = (data) => {
     dispatch(loginUser(data))
-      .then(() => navigate(routes.home))
+      .then(() => navigate(routes.app))
   }
 
   return <Page>

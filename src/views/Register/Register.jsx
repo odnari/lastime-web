@@ -19,7 +19,7 @@ export default function Login() {
       username: data.username,
       password: data.password,
     }))
-      .then(() => navigate(routes.home))
+      .then(() => navigate(routes.app))
   }
 
   return <Page>
